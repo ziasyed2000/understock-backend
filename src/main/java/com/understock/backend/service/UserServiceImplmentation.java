@@ -41,11 +41,13 @@ public class UserServiceImplmentation implements UserService {
 
     @Override
     public User getUser(String username) {
+        log.info("Getting user:{}", username);
         return userRepository.findByUsername(username);
     }
 
     @Override
     public List<User> getUsers() {
+        log.info("Getting all users");
         return userRepository.findAll();
     }
 }
