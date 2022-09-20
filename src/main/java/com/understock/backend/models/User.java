@@ -20,13 +20,12 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
     /*
     * -- Work In Progress --
-    * Additional fields will be added later when needed.
+    * Additional variables will be added later when needed.
     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
