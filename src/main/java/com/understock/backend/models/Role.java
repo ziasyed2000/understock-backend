@@ -1,11 +1,7 @@
 package com.understock.backend.models;
 
 import lombok.*;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /*
  * Model to define data required for the Role to be

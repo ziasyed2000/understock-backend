@@ -1,10 +1,8 @@
 package com.understock.backend.models;
 
 import lombok.*;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
 /*
 * Model to define data required for the User to be
