@@ -18,6 +18,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Implementing defined methods within the UserService.
+ *
+ * This will define all the common methods that will be used
+ * to operate CRUD operations within the User model.
+ */
+
 @Service
 @RequiredArgsConstructor
 @Transactional
