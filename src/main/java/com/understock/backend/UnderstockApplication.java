@@ -32,10 +32,10 @@ public class UnderstockApplication {
             userService.saveRole(new Role(null, "ROLE_ADMIN"));
             userService.saveRole(new Role(null, "ROLE_SUPER_ADMIN"));
 
-            userService.saveUser(new User(null, "John Trov", "test@gmail.com", "johntrov123", "test123", new ArrayList<>()));
-            userService.saveUser(new User(null, "Jim Trov", "test@gmail.com", "jimtrov123", "test123", new ArrayList<>()));
-            userService.saveUser(new User(null, "Lala Trov", "test@gmail.com", "lalatrov123", "test123", new ArrayList<>()));
-            userService.saveUser(new User(null, "Mop Trov", "test@gmail.com", "moptrov123", "test123", new ArrayList<>()));
+            userService.saveUser(new User(null, "John Trov", "test@gmail.com", "johntrov123", "test123", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+            userService.saveUser(new User(null, "Jim Trov", "test@gmail.com", "jimtrov123", "test123", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+            userService.saveUser(new User(null, "Lala Trov", "test@gmail.com", "lalatrov123", "test123", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+            userService.saveUser(new User(null, "Mop Trov", "test@gmail.com", "moptrov123", "test123", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
 
             userService.addRoleToUser("johntrov123", "ROLE_USER");
             userService.addRoleToUser("jimtrov123", "ROLE_USER");
