@@ -19,7 +19,7 @@ import java.util.*;
 @AllArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     private String email;
@@ -35,4 +35,10 @@ public class User {
     */
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private Collection<Role> addresses = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private Collection<Role> orders = new ArrayList<>();
 }
