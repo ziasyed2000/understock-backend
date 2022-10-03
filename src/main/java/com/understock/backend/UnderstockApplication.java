@@ -1,5 +1,6 @@
 package com.understock.backend;
 
+import com.understock.backend.models.Address;
 import com.understock.backend.models.Role;
 import com.understock.backend.models.User;
 import com.understock.backend.service.UserService;
@@ -40,8 +41,10 @@ public class UnderstockApplication {
             userService.addRoleToUser("johntrov123", "ROLE_USER");
             userService.addRoleToUser("jimtrov123", "ROLE_USER");
             userService.addRoleToUser("jimtrov123", "ROLE_SUPER_ADMIN");
-            userService.addRoleToUser("lalatrov123", "ROLE_SUPER_ADMIN");
+            userService.addRoleToUser("lalatrov123", "ROLE_ADMIN");
             userService.addRoleToUser("moptrov123", "ROLE_MANAGER");
+
+            userService.addAddressToUser("johntrov123", new Address(null, "1212", "2", "BrokeStreet", "Toronto", "ON", "M4H1P8", "Canada"));
         };
     }
 
