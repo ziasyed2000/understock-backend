@@ -1,5 +1,6 @@
 package com.understock.backend.service;
 
+import com.understock.backend.models.Address;
 import com.understock.backend.models.Role;
 import com.understock.backend.models.User;
 
@@ -13,6 +14,7 @@ public interface UserService {
     User saveUser(User user);
     Role saveRole(Role role);
     void addRoleToUser(String username, String roleName);
+    void addAddressToUser(String username, Address address);
     User getUser(String username);
     List<User>getUsers();
 }

@@ -1,5 +1,6 @@
 package com.understock.backend.service;
 
+import com.understock.backend.models.Address;
 import com.understock.backend.models.Role;
 import com.understock.backend.models.User;
 import com.understock.backend.repository.RoleRepository;
@@ -72,6 +73,13 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         User user = userRepository.findByUsername(username);
         Role role = roleRepository.findByName(roleName);
         user.getRoles().add(role);
+    }
+
+    @Override
+    public void addAddressToUser(String username, Address address) {
+        log.info("Adding address: {} to the user: {}", address, username);
+        User user = userRepository.findByUsername(username);
+        user.getAddresses().add(address);
     }
 
     @Override
