@@ -37,8 +37,8 @@ public class User {
     private Collection<Role> roles = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.EAGER)
-    private Collection<Role> addresses = new ArrayList<>();
+    private Collection<Address> addresses = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.EAGER)
-    private Collection<Role> orders = new ArrayList<>();
+    private Collection<Order> orders = new ArrayList<>();
 }
