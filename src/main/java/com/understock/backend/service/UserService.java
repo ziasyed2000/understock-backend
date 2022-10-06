@@ -12,11 +12,12 @@ import java.util.List;
  * to be used when client makes a request, once authenticated.
  */
 public interface UserService {
+    boolean userExists(String username);
+    User getUser(String username);
     User saveUser(User user);
     Role saveRole(Role role);
     void addRoleToUser(String username, String roleName);
     void addAddressToUser(String username, Address address);
     void addOrderToUser(String username, Order order);
-    User getUser(String username);
     List<User>getUsers();
 }

@@ -26,11 +26,16 @@ public class UserController {
      * user into the DB. We then assign the basic permissions to that user.
      */
     @PostMapping("/register")
-    public ResponseEntity<User>saveUser(@RequestBody User user) {
+    public ResponseEntity<?>saveUser(@RequestBody User user) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/register").toUriString());
-        userService.saveUser(user);
-        userService.addRoleToUser(user.getUsername(), "ROLE_USER");
-        return ResponseEntity.created(uri).body(userService.getUser(user.getUsername()));
+        if (userService.userExists(user.getUsername())) {
+            return ResponseEntity.status(403).build();
+        } else {
+            userService.saveUser(user);
+            userService.addRoleToUser(user.getUsername(), "ROLE_USER");
+
+            return ResponseEntity.created(uri).body(userService.getUser(user.getUsername()));
+        }
     }
 
     @GetMapping("/getUserList")

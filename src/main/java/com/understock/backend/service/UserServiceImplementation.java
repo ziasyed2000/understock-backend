@@ -37,6 +37,12 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     private final PasswordEncoder passwordEncoder;
 
     @Override
+    public boolean userExists(String username) {
+        log.info("Checking if user '{}' exists.", username);
+        return userRepository.findByUsername(username) != null;
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
 
