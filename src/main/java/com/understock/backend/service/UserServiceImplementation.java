@@ -43,22 +43,9 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-
-        if (user == null) {
-            log.error("User not found in the DB.");
-            throw new UsernameNotFoundException("User not found in the DB.");
-        } else {
-            log.info("User - {} found in the DB.", username);
-        }
-
-        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        user.getRoles().forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        });
-
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
+    public User getUser(String username) {
+        log.info("Getting user:{}", username);
+        return userRepository.findByUsername(username);
     }
 
     @Override
@@ -97,14 +84,27 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public User getUser(String username) {
-        log.info("Getting user:{}", username);
-        return userRepository.findByUsername(username);
-    }
-
-    @Override
     public List<User> getUsers() {
         log.info("Getting all users");
         return userRepository.findAll();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
+
+        if (user == null) {
+            log.error("User not found in the DB.");
+            throw new UsernameNotFoundException("User not found in the DB.");
+        } else {
+            log.info("User - {} found in the DB.", username);
+        }
+
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        user.getRoles().forEach(role -> {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        });
+
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
     }
 }
