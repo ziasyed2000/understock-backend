@@ -1,5 +1,6 @@
 package com.understock.backend.api;
 
+import com.understock.backend.models.Address;
 import com.understock.backend.models.Role;
 import com.understock.backend.models.User;
 import com.understock.backend.service.UserService;
@@ -26,7 +27,7 @@ public class UserController {
      * user into the DB. We then assign the basic permissions to that user.
      */
     @PostMapping("/register")
-    public ResponseEntity<?>saveUser(@RequestBody User user) {
+    public ResponseEntity<?>register(@RequestBody User user) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/register").toUriString());
         if (userService.userExists(user.getUsername())) {
             return ResponseEntity.status(403).build();
@@ -36,6 +37,18 @@ public class UserController {
 
             return ResponseEntity.created(uri).body(userService.getUser(user.getUsername()));
         }
+    }
+
+    @PostMapping("/role/addToUser")
+    public ResponseEntity<?>addRoleToUser(@RequestBody RoleToUserForm form) {
+        userService.addRoleToUser(form.getUsername(), form.getRoleName());
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/address/addToUser")
+    public ResponseEntity<?>addAddressToUser(@RequestBody AddressToUserForm form) {
+        userService.addAddressToUser(form.getUsername(), form.getAddress());
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/getUserList")
@@ -49,15 +62,16 @@ public class UserController {
 //        return ResponseEntity.created(uri).body(userService.saveRole(role));
 //    }
 //
-//    @PostMapping("/role/addToUser")
-//    public ResponseEntity<?>addRoleToUser(@RequestBody RoleToUserForm form) {
-//        userService.addRoleToUser(form.getUsername(), form.getRoleName());
-//        return ResponseEntity.ok().build();
-//    }
 }
 
 @Data
 class RoleToUserForm {
     private String username;
     private String roleName;
+}
+
+@Data
+class AddressToUserForm {
+    private String username;
+    private Address address;
 }
