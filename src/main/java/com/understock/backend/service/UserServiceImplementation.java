@@ -56,9 +56,9 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public void saveRole(Role role) {
+    public Role saveRole(Role role) {
         log.info("Saving new role - {} - to the database", role.getName());
-        roleRepository.save(role);
+        return roleRepository.save(role);
     }
 
     @Override

@@ -15,7 +15,7 @@ public interface UserService {
     boolean userExists(String username);
     User getUser(String username);
     void saveUser(User user);
-    void saveRole(Role role);
+    Role saveRole(Role role);
     void addRoleToUser(String username, String roleName);
     void addAddressToUser(String username, Address address);
     void addOrderToUser(String username, Order order);
