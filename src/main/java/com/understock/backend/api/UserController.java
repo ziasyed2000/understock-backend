@@ -63,12 +63,11 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getUsers());
     }
 
-//    @PostMapping("/role/save")
-//    public ResponseEntity<Role>saveRole(@RequestBody Role role) {
-//        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/role/save").toUriString());
-//        return ResponseEntity.created(uri).body(userService.saveRole(role));
-//    }
-//
+    @PostMapping("/role/add")
+    public ResponseEntity<Role>addRole(@RequestBody Role role) {
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/role/save").toUriString());
+        return ResponseEntity.created(uri).body(userService.saveRole(role));
+    }
 }
 
 @Data
