@@ -1,6 +1,7 @@
 package com.understock.backend.api;
 
 import com.understock.backend.models.Address;
+import com.understock.backend.models.Order;
 import com.understock.backend.models.Role;
 import com.understock.backend.models.User;
 import com.understock.backend.service.UserService;
@@ -51,6 +52,12 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/order/addToUser")
+    public ResponseEntity<?>addOrderToUser(@RequestBody OrderToUserForm form) {
+        userService.addOrderToUser(form.getUsername(), form.getOrder());
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/getUserList")
     public ResponseEntity<List<User>>getUsers() {
         return ResponseEntity.ok().body(userService.getUsers());
@@ -74,4 +81,10 @@ class RoleToUserForm {
 class AddressToUserForm {
     private String username;
     private Address address;
+}
+
+@Data
+class OrderToUserForm {
+    private String username;
+    private Order order;
 }
